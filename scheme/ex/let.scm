@@ -3,9 +3,11 @@
 ; and b = (1 - y)
 ; then f( x, y) = xa^2 + yb + ab
 
-(define (sq x) (* x x))
-
 (define (f x y)
+
+  ;inner function
+  (define (sq x) (* x x))
+
   ;local variables
   (let ((a (+ 1 (* x y)))
         (b (- 1 y)))
