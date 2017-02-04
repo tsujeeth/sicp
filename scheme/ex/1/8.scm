@@ -10,26 +10,28 @@
   (define (root-iter guess)
     (if (good-enough? guess)
       guess 
-      (root-iter (improve x guess))))
+      (root-iter (improve guess))))
 
   (root-iter 1.0))
 
-(define (improve-sq x guess)
-  (define (average x y)
-    (/ (+ x y) 2))
-  
-  (average guess (/ x guess)))
+(define (sqrt x)
+  (define (improve guess)
+    (define (average x y)
+      (/ (+ x y) 2))
 
-(define (improve-cube x guess)
-  ; (x/y^2 + 2y) / 3
-  (/ (+ (* 2 guess) (/ x (* guess guess))) 3))
- 
-(root 
-  5.0 
-  (lambda (x) (* x x))
-  improve-sq)
+    (average guess (/ x guess)))
 
-(root 
-  9.0 
-  (lambda (x) (* x x x))
-  improve-cube)
+  (root x (lambda (x) (* x x)) improve))
+
+(define (cbrt x)
+  (define (improve guess)
+    ; (x/y^2 + 2y) / 3
+    (/ (+ (* 2 guess) (/ x (* guess guess))) 3))
+
+  (root x (lambda (x) (* x x x)) improve))
+
+; square root of 5.0
+(sqrt 5.0)
+
+; cube root of 9.0
+(cbrt 9.0)
