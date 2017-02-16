@@ -1,10 +1,7 @@
-(define (cube x) (* x x x))
-
-(define (sum3 a b result)
+(define (cube-sum a b result)
+  (define (cube x) (* x x x))
   (if (> a b)
     result
-    (sum3 (+ 1 a) b (+ result (cube a)))
-  )
-)
+    (cube-sum (+ 1 a) b (+ result (cube a)))))
 
-(sum3 0 10 0)
+(cube-sum 0 10 0)
