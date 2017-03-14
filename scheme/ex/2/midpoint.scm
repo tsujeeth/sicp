@@ -1,5 +1,15 @@
 (define (point x y) (cons x y))
 
+(define (print-point p)
+  (define x-point (car p))
+  (define y-point (cdr p))
+  (newline)
+  (display "(x: ")
+  (display x-point)
+  (display ", y: ")
+  (display y-point)
+  (display ")"))
+
 (define (segment p1 p2) (cons p1 p2))
 
 (define (mid l)
@@ -18,4 +28,4 @@
 ; and find their mid-point.
 (let ((a (point 1 1))
       (b (point 5 5)))
-  (mid (segment a b)))
+  (print-point (mid (segment a b))))
